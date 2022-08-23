@@ -44,10 +44,12 @@ You can choose between two exercices :
 #### We’ve left some UI mistakes, find them and fix them 🙂
 
 ### Second part
-You have to reproduce this component :
+You have to reproduce this component : 
 ![Blissim home component](/public/static/images/blissim-component.png "Blisism home component")
 You can choose similar fonts and the image is available in the public folder.
 You can positioned the component on the homepage instead of the "lorem" text.
+
+Here is the figma file : https://www.figma.com/file/vxaazm4D0eucRuMhBkWL6r/Composant-Card
 
 ## Learn More
 
