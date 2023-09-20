@@ -33,15 +33,14 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 - user can navigate to a dedicated page with all products saved in the wishlist
 
 #### Remember, this is a frontend job offer, pay attention to UI and UX.
-#### We’ve left some UI mistakes, find them and fix them 🙂
-#### Remember, this is a lead job offer, pay attention web about performance issues and potential bottlenecks.
+#### Remember, this is also a lead job offer, pay attention about web performance issues and potential bottlenecks.
 
 ### Second part
 You have to reproduce this component : 
 ![Blissim home component](/public/static/images/card-component.png "Blisism home component")
 You can choose similar fonts and the image is available in the public folder.
 You can positioned the component on the homepage instead of the "lorem" text.
-Keep in mind that on our website all content is customizable by teams and come from a back office. This is not hard coded.
+#### Keep in mind that most of the content on our site is customizable by teams and comes from a back office. It's not hardcoded.
 
 Here is the figma file : https://www.figma.com/file/vxaazm4D0eucRuMhBkWL6r/Composant-Card
 
