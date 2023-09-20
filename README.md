@@ -27,27 +27,20 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 ## Technical Test
 ### First part
-You can choose between two exercices :
-
-1 - Wishlist implementation :
+#### Wishlist implementation :
 - user can add a product to his wishlist
 - user can remove a product from his wishlist
-- user can navigate to a page with all products saved in the wishlist on url /wishlists
+- user can navigate to a dedicated page with all products saved in the wishlist
 
-2 - Categories navigation
-- user can see products by category and access them on url /boutique/[category]
-- categories in side menu have to be displayed dynamically (from api call)
-- products have to be displayed and filtered dynamically (from api call)
-#### You can use the api https://fakestoreapi.com/
-
-#### Remember this is a frontend job offer, pay attention to UI and UX.
-#### We’ve left some UI mistakes, find them and fix them 🙂
+#### Remember, this is a frontend job offer, pay attention to UI and UX.
+#### Remember, this is also a lead job offer, pay attention about web performance issues and potential bottlenecks.
 
 ### Second part
 You have to reproduce this component : 
-![Blissim home component](/public/static/images/blissim-component.png "Blisism home component")
+![Blissim home component](/public/static/images/card-component.png "Blisism home component")
 You can choose similar fonts and the image is available in the public folder.
 You can positioned the component on the homepage instead of the "lorem" text.
+#### Keep in mind that most of the content on our site is customizable by teams and comes from a back office. It's not hardcoded.
 
 Here is the figma file : https://www.figma.com/file/vxaazm4D0eucRuMhBkWL6r/Composant-Card
 
