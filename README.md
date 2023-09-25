@@ -32,7 +32,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 - user can remove a product from his wishlist
 - user can navigate to a dedicated page with all products saved in the wishlist
 
-#### Remember, this is a frontend lead job offer, pay attention about UI, UX of course but also web performance issues and potential bottlenecks.
+#### This is a frontend lead job offer, pay attention about UI, UX of course but also web performance issues and potential bottlenecks.
 
 ### Second part
 You have to reproduce this component : 
@@ -58,5 +58,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](~http
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Do not forget
-The purpose of this test is to evaluate your skills, so feel free to refactor and adapt the project to show us *your* skills and apply best practices.
+The purpose of this test is to evaluate your skills, so feel free to refactor and adapt the project to show us *your* skills and apply best practices (SOLID, web performance etc.).
 
