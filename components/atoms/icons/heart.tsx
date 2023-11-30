@@ -1,4 +1,4 @@
-export function HeartIcon({ isActive }: { isActive: boolean }) {
+export function HeartIcon({ isActive = false }: { isActive?: boolean }) {
   return (
     <svg
       data-active={isActive}

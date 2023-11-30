@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { DefaultLayout } from '~/components/DefaultLayout';
+import { DefaultLayout } from '~/components/templates/default-layout';
 
 export default function Home() {
   return (

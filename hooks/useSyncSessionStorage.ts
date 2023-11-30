@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
 
-export function useSyncSessionStorage(key: string, setter: (v: unknown) => void) {
+type Args = { key: string; setter: (v: ReturnType<typeof sessionStorage.getItem>) => void }[];
+
+export function useSyncSessionStorage(operations: Args) {
   useEffect(() => {
-    const stored = sessionStorage.getItem(key);
-    setter(stored);
-  }, [key, setter]);
+    operations.forEach(({ key, setter }) => {
+      const stored = sessionStorage.getItem(key);
+      setter(stored);
+    });
+  }, [operations]);
 }

@@ -9,6 +9,8 @@ import { z } from 'zod';
 */
 export const categories = ['men clothing', 'jewelery', 'electronics', 'women clothing'] as const;
 
+export const whishlistSchema = z.array(z.number());
+
 export const productSchema = z.object({
   id: z.number(),
   title: z.string(),

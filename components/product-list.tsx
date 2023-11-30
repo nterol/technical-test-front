@@ -1,23 +1,14 @@
 import { useAtomValue } from 'jotai';
 import Image from 'next/image';
+import Link from 'next/link';
 
-import BasketIcon from './icons/basket';
-import { HeartIcon } from './icons/heart';
-
-import { FilteredProductsAtom, IsProductInWhishList, WishListProductsAtom } from '~/store';
+import { FilteredProductsAtom, WishListProductsAtom } from '~/store';
 import s from '~/styles/auto-grid.module.css';
 import { formatPrice } from '~/utils/format';
 import { Product } from '~/utils/types';
 
-function WishlistButton({ id }: { id: number }) {
-  const isProductInWishList = useAtomValue(IsProductInWhishList(id));
-  const handleToWishlist = () => {};
-  return (
-    <button role="button" onClick={handleToWishlist} className="w-4 aspect-square text-primary-main">
-      <HeartIcon isActive={isProductInWishList} />
-    </button>
-  );
-}
+import BasketIcon from './atoms/icons/basket';
+import { WishlistButton } from './molecules/wishlist-button';
 
 function ProductActions({ id }: { id: number }) {
   const handleToCart = () => {};
@@ -40,7 +31,7 @@ function ProductCard({ product }: ProductCardProps) {
   return (
     <article className="rounded-sm bg-white p-4 flex flex-col gap-3 shadow-md w-full">
       <section className="flex w-full justify-center h-[230px]">
-        <Image src={product.image} alt={product.title} height={200} width={200} />
+        <Image src={product.image} alt={product.title} height={200} width={160} className="h-auto w-auto" />
       </section>
       <section className="flex flex-col gap-2">
         <h1>{product.title}</h1>
@@ -69,5 +60,14 @@ export function ProductList() {
 
 export function ProductWishList() {
   const wishlist = useAtomValue(WishListProductsAtom);
-  return <ProductListUI products={wishlist} />;
+  return wishlist.length > 0 ? (
+    <ProductListUI products={wishlist} />
+  ) : (
+    <div className="flex flex-col gap-3">
+      <p className="font-bold">Vous n&apos;avez aucun coup de coeur !</p>
+      <Link href="/boutique" className="p-2 rounded-md bg-primary-main flex justify-center text-white">
+        Time to shop ! 🛍️
+      </Link>
+    </div>
+  );
 }

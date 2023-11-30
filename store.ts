@@ -56,7 +56,9 @@ export const AddToWishList = atom(
   (get, set, productID: number) => {
     const wishList = get(WishListAtom);
     wishList.push(productID);
-    set(WishListAtom, [...new Set(wishList)]);
+    const newWishlist = [...new Set(wishList)];
+    sessionStorage.setItem('wishlist', JSON.stringify(newWishlist));
+    set(WishListAtom, newWishlist);
   },
 );
 
@@ -64,10 +66,9 @@ export const RemoveFromWishList = atom(
   () => {},
   (get, set, productID: number) => {
     const wishList = get(WishListAtom);
-    set(
-      WishListAtom,
-      wishList.filter((id) => id !== productID),
-    );
+    const newWishlist = wishList.filter((id) => id !== productID);
+    sessionStorage.setItem('wishlist', JSON.stringify(newWishlist));
+    set(WishListAtom, newWishlist);
   },
 );
 
