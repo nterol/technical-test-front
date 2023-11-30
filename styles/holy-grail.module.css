@@ -1,0 +1,4 @@
+.holy_grail {
+    display: grid;
+    grid-template-rows: 60px auto 100px;
+}
