@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { IsCartOpenAtom } from '~/store';
 
-import BasketIcon from '../../atoms/icons/basket';
+import BasketIcon from '../atoms/icons/basket';
 
 export function Header() {
   const setInter = useSetAtom(IsCartOpenAtom);

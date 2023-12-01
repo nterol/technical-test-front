@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FilterAtom } from '~/store';
 import { categories } from '~/utils/schema';
 
-import { HeartIcon } from './atoms/icons/heart';
+import { HeartIcon } from '../atoms/icons/heart';
 
 export function CategoryList() {
   const [filter, setFilter] = useAtom(FilterAtom);

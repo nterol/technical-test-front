@@ -7,8 +7,8 @@ import s from '~/styles/auto-grid.module.css';
 import { formatPrice } from '~/utils/format';
 import { Product } from '~/utils/types';
 
-import { AddToCartButton } from './molecules/cart-button';
-import { WishlistButton } from './molecules/wishlist-button';
+import { AddToCartButton } from '../molecules/cart-button';
+import { WishlistButton } from '../molecules/wishlist-button';
 
 function ProductActions({ id }: { id: number }) {
   return (

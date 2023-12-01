@@ -1,5 +1,5 @@
-import { CategoryList } from '~/components/category-list';
-import { ProductList } from '~/components/product-list';
+import { CategoryList } from '~/components/organisms/category-list';
+import { ProductList } from '~/components/organisms/product-list';
 import { DefaultLayout } from '~/components/templates/default-layout';
 
 export default function Boutique() {
