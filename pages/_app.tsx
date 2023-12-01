@@ -1,32 +1,36 @@
 import '~/styles/globals.css';
+import { useSetAtom } from 'jotai';
 import { useHydrateAtoms } from 'jotai/utils';
 import { type AppType } from 'next/app';
 
 import products from '~/data/products.json';
 import { useSyncSessionStorage } from '~/hooks/useSyncSessionStorage';
-import { ProductsAtom } from '~/store';
+import { CartAtom, ProductsAtom, WishListAtom } from '~/store';
 import { cartSchema, whishlistSchema } from '~/utils/schema';
+import { Product } from '~/utils/types';
 
-const parseCart = (v: ReturnType<typeof sessionStorage.getItem>) => {
+const parseCart = (setter: (v: Product[]) => void) => (v: ReturnType<typeof sessionStorage.getItem>) => {
   try {
-    return cartSchema.parse(JSON.parse(v ?? ''));
+    setter(cartSchema.parse(JSON.parse(v ?? '')));
   } catch {
-    return [];
+    return setter([]);
   }
 };
 
-const parseWishlist = (v: ReturnType<typeof sessionStorage.getItem>) => {
+const parseWishlist = (setter: (v: number[]) => void) => (v: ReturnType<typeof sessionStorage.getItem>) => {
   try {
-    return whishlistSchema.parse(JSON.parse(v ?? ''));
+    setter(whishlistSchema.parse(JSON.parse(v ?? '')));
   } catch {
-    return [];
+    setter([]);
   }
 };
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+  const setWishList = useSetAtom(WishListAtom);
+  const setCart = useSetAtom(CartAtom);
   useSyncSessionStorage([
-    { key: 'cart', setter: parseCart },
-    { key: 'wishlist', setter: parseWishlist },
+    { key: 'cart', setter: parseCart(setCart) },
+    { key: 'wishlist', setter: parseWishlist(setWishList) },
   ]); //I know this is not ideal but I did not take the time to understand atomWithStorage properly
 
   useHydrateAtoms([

@@ -1,0 +1,30 @@
+.reassurance {
+    @apply flex flex-col gap-6 p-6 flex-1;
+}
+
+.reassurance  h2 {
+    @apply text-3xl;
+}
+
+.reassurance div {
+    @apply grid gap-y-2 gap-x-6 w-full grid-cols-1 sm:grid-cols-[60px_1fr] grid-rows-3 sm:grid-rows-[auto_auto] items-center;
+}
+
+.reassurance img {
+    @apply w-[60px] row-span-1 sm:col-span-1 sm:row-span-2;   
+}
+
+@media (min-width: 640px)  {
+    .reassurance p, .reassurance h1 {
+        grid-column: 2;
+    }
+
+    .reassurance h1 {    
+        grid-row: 1;
+    }
+    
+    .reassurance p {
+        grid-row: 2;
+    }
+}
+

@@ -6,6 +6,7 @@ export function useSyncSessionStorage(operations: Args) {
   useEffect(() => {
     operations.forEach(({ key, setter }) => {
       const stored = sessionStorage.getItem(key);
+
       setter(stored);
     });
   }, [operations]);

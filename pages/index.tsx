@@ -1,23 +1,40 @@
+import { GetStaticPropsResult, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
+import { CardComponent } from '~/components/molecules/card-component';
 import { DefaultLayout } from '~/components/templates/default-layout';
+import { getContent } from '~/utils/get-content';
 
-export default function Home() {
+type Props = {
+  content: MDXRemoteSerializeResult<Record<string, unknown>, Record<string, unknown>>;
+};
+
+export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
+  const content = await getContent('/content/reassurance.mdx');
+
+  return {
+    props: {
+      content,
+    },
+  };
+}
+
+export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <DefaultLayout>
-      <main className="flex flex-col justify-center items-center">
-        <section className="max-w-xl flex flex-col items-center gap-4">
-          <h1 className="text-6xl ">SuperShop</h1>
-          <h5 className="text-2xl text-center text-secondary-text font-light">
-            Something short and leading about the collection below—its contents, the creator, etc. Make it short and
-            sweet, but not too short so folks don&apos;t simply skip over it entirely.
-          </h5>
+      {/* <main className="flex flex-col justify-center items-center"> */}
+      <section className="max-w-xl flex flex-col items-center gap-4">
+        <h1 className="text-6xl ">SuperShop</h1>
+      </section>
+      <CardComponent>
+        <MDXRemote {...props.content} />
+      </CardComponent>
+      <Link href="/boutique" passHref className="py-2 px-4 rounded-sm shadow-sm bg-light text-black">
+        La Boutique
+      </Link>
 
-          <Link href="/boutique" passHref className="py-2 px-4 rounded-sm shadow-sm bg-light text-black">
-            La Boutique
-          </Link>
-        </section>
-      </main>
+      {/* </main> */}
     </DefaultLayout>
   );
 }

@@ -7,17 +7,13 @@ import s from '~/styles/auto-grid.module.css';
 import { formatPrice } from '~/utils/format';
 import { Product } from '~/utils/types';
 
-import BasketIcon from './atoms/icons/basket';
+import { AddToCartButton } from './molecules/cart-button';
 import { WishlistButton } from './molecules/wishlist-button';
 
 function ProductActions({ id }: { id: number }) {
-  const handleToCart = () => {};
-
   return (
     <section className="flex justify-between">
-      <button role="button" onClick={handleToCart} className="w-4 aspect-square text-primary-main">
-        <BasketIcon />
-      </button>
+      <AddToCartButton id={id} />
       <WishlistButton id={id} />
     </section>
   );
@@ -29,14 +25,14 @@ type ProductCardProps = {
 
 function ProductCard({ product }: ProductCardProps) {
   return (
-    <article className="rounded-sm bg-white p-4 flex flex-col gap-3 shadow-md w-full">
+    <article className="rounded-sm bg-white p-4 grid grid-rows-[auto_1fr_auto] gap-3 shadow-md w-full">
       <section className="flex w-full justify-center h-[230px]">
         <Image src={product.image} alt={product.title} height={200} width={160} className="h-auto w-auto" />
       </section>
-      <section className="flex flex-col gap-2">
+      <Link href={`/boutique/${product.id}`} className="flex flex-col gap-2">
         <h1>{product.title}</h1>
         <p className="text-secondary-text">{formatPrice(product.price)}</p>
-      </section>
+      </Link>
       <ProductActions id={product.id} />
     </article>
   );

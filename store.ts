@@ -38,7 +38,9 @@ export const RemoveFromCart = atom(
   () => {},
   (get, set, productID: number) => {
     const prevCart = get(CartAtom);
-    const newCart = prevCart.filter((p) => p.id !== productID);
+    const pIndex = prevCart.findIndex((p) => p.id === productID);
+    prevCart.splice(pIndex, 1);
+    const newCart = [...prevCart];
     sessionStorage.setItem('cart', JSON.stringify(newCart));
     set(CartAtom, newCart);
   },
