@@ -7,7 +7,7 @@ import { WithChildrenProps } from '~/utils/types';
 export function CardComponent({ children }: WithChildrenProps<unknown>) {
   return (
     <section className="flex flex-col sm:flex-row w-[90%] mx-auto rounded-lg overflow-hidden border border-slate-200 my-6">
-      <Image src={cover} alt="homebox cover" className="flex-1 w-full" />
+      <Image priority src={cover} alt="homebox cover" className="flex-1 w-full" />
       <div className={s.reassurance}>{children}</div>
     </section>
   );
