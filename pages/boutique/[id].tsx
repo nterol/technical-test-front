@@ -9,19 +9,23 @@ import { Product } from '~/utils/types';
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
-    paths: products.map((product) => ({
-      params: { id: `${product.id}` },
-    })),
-    fallback: true,
+    paths: products.map((product) => {
+      return {
+        params: { id: `${product.id}` },
+      };
+    }),
+    fallback: false,
   };
 };
 
 type Params = {
   id: string;
 };
+
 type Props = {
   product: Product;
 };
+
 export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
   const productID = ctx.params?.id ?? '1';
 
