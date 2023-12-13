@@ -10,7 +10,7 @@ import { Product } from '~/utils/types';
 import { AddToCartButton } from '../molecules/cart-button';
 import { WishlistButton } from '../molecules/wishlist-button';
 
-function ProductActions({ id }: { id: number }) {
+function ProductActions({ id }: { id: string }) {
   return (
     <section className="flex justify-between">
       <AddToCartButton id={id} />

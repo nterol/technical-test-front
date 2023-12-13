@@ -26,9 +26,9 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
       <section className="max-w-xl flex flex-col items-center gap-4">
         <h1 className="text-6xl ">SuperShop</h1>
       </section>
-      <CardComponent>
+      {/* <CardComponent>
         <MDXRemote {...props.content} />
-      </CardComponent>
+      </CardComponent> */}
       <Link href="/boutique" passHref className="py-2 px-4 rounded-sm shadow-sm bg-light text-black">
         La Boutique
       </Link>

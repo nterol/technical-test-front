@@ -15,7 +15,7 @@ export function DeleteProductButton({ id }: { id: number }) {
   );
 }
 
-export function AddToCartButton({ id }: { id: number }) {
+export function AddToCartButton({ id }: { id: string }) {
   const setAddTocart = useSetAtom(AddToCartAtom);
   const product = useAtomValue(ProductsAtom)?.get(id);
   return (
@@ -29,7 +29,7 @@ export function AddToCartButton({ id }: { id: number }) {
   );
 }
 
-export function AddToCartCTA({ id }: { id: number }) {
+export function AddToCartCTA({ id }: { id: string }) {
   const setAddTocart = useSetAtom(AddToCartAtom);
   const product = useAtomValue(ProductsAtom)?.get(id);
   const [feedback, setFeedback] = useState(false);

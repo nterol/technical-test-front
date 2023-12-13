@@ -12,23 +12,19 @@ export function CategoryList() {
     <div className="flex flex-col gap-3 p-2">
       <h3 className="font-bold p-2">Category</h3>
       <ul className="flex flex-col gap-4">
-        {categories.map((category) => {
-          const [c, ...apitalize] = category.split('');
-          return (
-            <li
-              data-active={filter === category}
-              role="button"
-              onClick={() => setFilter((p) => (p === category ? null : category))}
-              className="rounded-md p-2 hover:bg-slate-100 
+        {categories.map((category) => (
+          <li
+            data-active={filter === category}
+            role="button"
+            onClick={() => setFilter((p) => (p === category ? null : category))}
+            className="rounded-md p-2 hover:bg-slate-100 
               whitespace-nowrap text-slate-500 data-[active=true]:bg-primary-main 
               data-[active=true]:text-white"
-              key={category}
-            >
-              {c.toUpperCase()}
-              {apitalize}
-            </li>
-          );
-        })}
+            key={category}
+          >
+            {category}
+          </li>
+        ))}
       </ul>
       <Link className="p-2 rounded-md bg-pink-300 flex items-center gap-1" href="/wishlist">
         <span className="w-4 aspect-square">

@@ -1,22 +1,16 @@
 import { z } from 'zod';
 
-/* 
- comes from : 
- import d from '@/data/products.json';
- const s = new Set();
- d.forEach(({category}) => s.add(category));
- categories = [...s.values()];
-*/
 export const categories = ['men clothing', 'jewelery', 'electronics', 'women clothing'] as const;
 
 export const whishlistSchema = z.array(z.number());
 
 export const productSchema = z.object({
-  id: z.number(),
+  id: z.string(),
   title: z.string(),
   price: z.number(),
   description: z.string(),
-  category: z.enum(categories),
+  category: z.string(),
+  //z.enum(categories),
   image: z.string(),
 });
 
