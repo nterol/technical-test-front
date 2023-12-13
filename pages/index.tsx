@@ -23,7 +23,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
 export default function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <DefaultLayout>
-      {/* <main className="flex flex-col justify-center items-center"> */}
       <section className="max-w-xl flex flex-col items-center gap-4">
         <h1 className="text-6xl ">SuperShop</h1>
       </section>
@@ -33,8 +32,6 @@ export default function Home(props: InferGetStaticPropsType<typeof getStaticProp
       <Link href="/boutique" passHref className="py-2 px-4 rounded-sm shadow-sm bg-light text-black">
         La Boutique
       </Link>
-
-      {/* </main> */}
     </DefaultLayout>
   );
 }
