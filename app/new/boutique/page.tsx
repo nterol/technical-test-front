@@ -1,19 +1,10 @@
+import { getProducts } from '~/data/products';
 import { Product } from '~/utils/types';
 
 import { FilteredProductList } from '../product-context';
 //import { ProductList } from '../product-list';
 
 import { FilterList } from './filter-list';
-
-async function getProducts() {
-  try {
-    const res = await fetch(`${process.env.API_ENDPOINT}/products`, { cache: 'default' });
-
-    if (res.ok) return res.json();
-  } catch (err) {
-    throw new Error('Could not retrieve data', { cause: err });
-  }
-}
 
 export default async function ProductsPage() {
   const res: Product[] = await getProducts();
