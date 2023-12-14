@@ -1,7 +1,79 @@
 import { atom } from 'jotai';
-import { atomFamily } from 'jotai/utils';
+import { atomFamily, atomWithStorage, createJSONStorage } from 'jotai/utils';
 
 import { Cart, Product } from './utils/types';
+
+/**
+ * APP ROUTER TEST
+ */
+
+export const NewCart = atomWithStorage<{ productID: string; quantity: number }[]>(
+  'new-cart',
+  [],
+  createJSONStorage(() => sessionStorage),
+);
+
+export const NewWishlist = atomWithStorage<string[]>(
+  'new-whishlist',
+  [],
+  createJSONStorage(() => sessionStorage),
+);
+
+export const ProductIsInCart = atomFamily((productID) =>
+  atom((get) => {
+    const cart = get(NewCart);
+    return cart.findIndex((c) => c.productID === productID) > -1;
+  }),
+);
+
+export const NewAddToCart = atom(
+  () => {},
+  (get, set, { productID }: { productID: string }) => {
+    const prevCart = get(NewCart);
+
+    const hasProduct = prevCart.find((element) => element.productID === productID);
+
+    if (hasProduct) {
+      const cartMap = new Map(prevCart.map((p) => [p.productID, p]));
+      cartMap.set(productID, { productID, quantity: hasProduct.quantity + 1 });
+      set(NewCart, [...cartMap.values()]);
+      return;
+    }
+    set(NewCart, [...prevCart, { productID, quantity: 1 }]);
+  },
+);
+
+export const NewRemoveFromCart = atom(
+  () => {},
+  (get, set, { productID }: { productID: string }) => {
+    const cart = get(NewCart);
+    set(
+      NewCart,
+      cart.filter((c) => c.productID !== productID),
+    );
+  },
+);
+
+export const NewAddToWishList = atom(
+  () => {},
+  (get, set, productID: string) => {
+    const wishlist = get(NewWishlist);
+    if (wishlist.includes(productID)) {
+      set(
+        NewWishlist,
+        wishlist.filter((w) => w !== productID),
+      );
+      return;
+    }
+    set(NewWishlist, [...new Set([...wishlist, productID]).values()]);
+  },
+);
+export const IsProductInNewWhishList = atomFamily((id: string) =>
+  atom((get) => {
+    const wishlist = get(NewWishlist);
+    return wishlist?.includes(id) ?? false;
+  }),
+);
 
 /** ALL ON PRRODUCTS */
 export const FilterAtom = atom<Product['category'] | null>(null);
@@ -36,7 +108,7 @@ export const AddToCartAtom = atom(
 
 export const RemoveFromCart = atom(
   () => {},
-  (get, set, productID: number) => {
+  (get, set, productID: string) => {
     const prevCart = get(CartAtom);
     const pIndex = prevCart.findIndex((p) => p.id === productID);
     prevCart.splice(pIndex, 1);

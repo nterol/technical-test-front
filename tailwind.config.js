@@ -25,6 +25,7 @@ module.exports = {
     gridTemplateColumns: ({ theme }) => {
       const spacing = theme('spacing');
       return Object.keys(spacing).reduce((acc, spacingKey) => {
+        
         return {
           ...acc,
           [`fill-${spacingKey}`]: `repeat(auto-fill, minmax(${spacing[spacingKey]}, 1fr))`,
