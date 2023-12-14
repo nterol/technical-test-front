@@ -2,7 +2,6 @@ import { getProducts } from '~/data/products';
 import { Product } from '~/utils/types';
 
 import { FilteredProductList } from '../product-context';
-//import { ProductList } from '../product-list';
 
 import { FilterList } from './filter-list';
 

@@ -8,3 +8,5 @@ export async function getContent(filePath: string) {
 
   return await serialize(fileContent);
 }
+
+export type ContentType = Awaited<ReturnType<typeof serialize>>;

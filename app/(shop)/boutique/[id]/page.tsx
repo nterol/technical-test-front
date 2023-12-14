@@ -4,6 +4,8 @@ import { type Product } from '~/utils/types';
 
 import DisplayPrice from '../display-price';
 
+import { AddToCartCTA } from './add-to-cart';
+
 async function getProduct(id: string) {
   const res = await fetch(`${process.env.API_ENDPOINT}/products/${id}`);
 
@@ -35,7 +37,7 @@ export default async function ProductPage({ params: { id } }: { params: { id: nu
         <DisplayPrice price={product.price} />
         {/* <p className="text-secondary-text text-2xl">{formatPrice(product.price)}</p> */}
         <p className="text-xl">{product.description}</p>
-        {/* <AddToCartCTA id={product.id} /> */}
+        <AddToCartCTA productID={product.id} />
       </div>
     </section>
   );

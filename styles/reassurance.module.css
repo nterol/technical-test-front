@@ -7,7 +7,14 @@
 }
 
 .reassurance div {
-    @apply grid gap-y-2 gap-x-6 w-full grid-cols-1 sm:grid-cols-[60px_1fr] grid-rows-3 sm:grid-rows-[auto_auto] items-center;
+    display:grid;
+    row-gap: 0.5rem/* 8px */;
+    column-gap: 1.5rem/* 24px */;
+    grid-template-columns: minmax(0, 1fr); /*This is the one not working for reasons*/
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    align-items: center;
+
+    /* @apply grid gap-y-2 gap-x-6 w-full grid-cols-1 sm:grid-cols-[60px_1fr] grid-rows-3 sm:grid-rows-[auto_auto] items-center; */
 }
 
 .reassurance img {
@@ -17,6 +24,10 @@
 @media (min-width: 640px)  {
     .reassurance p, .reassurance h1 {
         grid-column: 2;
+    }
+    .reassurance div {
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: auto auto;
     }
 
     .reassurance h1 {    
